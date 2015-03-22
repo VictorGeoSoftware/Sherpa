@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sherpa</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyAzGz8cJjcpSmOyQ0xmJwRTn_ZI8DdQWmg</string>
+    <string name="no_adrresses_saved">No saved addresses</string>
+    <string name="adrress_not_found">Address not found</string>
+    <string name="street_citiy">Street, city</string>
+</resources>
