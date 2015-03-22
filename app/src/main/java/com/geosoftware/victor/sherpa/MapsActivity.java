@@ -222,6 +222,16 @@ public class MapsActivity extends FragmentActivity implements SensorEventListene
         super.onPause();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(sherpaOn){
+            mMap.clear();
+            sherpaOn = false;
+        }
+    }
+
     /**
      * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
      * installed) and the map has not already been instantiated.. This will ensure that we only ever
@@ -338,7 +348,8 @@ public class MapsActivity extends FragmentActivity implements SensorEventListene
             holder.imgWalk.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-
+                      targetPosition = new LatLng(address.getLatitude(), address.getLongitude());
+                      sherpaOn = true;
                   }
               }
             );
@@ -367,12 +378,21 @@ public class MapsActivity extends FragmentActivity implements SensorEventListene
             latLngPosition = new LatLng(latitude, longitude);
 
             if(sherpaOn){
+                /*
+                Controlar:
+                    - Inteligencia para cuando mire el mapa, que no posicione (Timer a 3 o 4 s?)
+                    - Tocar pantalla para guardar punto, con efecto y demás cosas (onLongClick)
+                    - Base de datos para direcciones guardadas
+                    - Tambien guardar punto en el icono azul de posición
+                 */
+
                 if(targetPosition != null){
                     mMap.clear();
+                    positioningMap(latitude, longitude);
                     drawLine(latLngPosition, targetPosition);
                 }
             }else{
-                
+
             }
         }
 
